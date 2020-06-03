@@ -7,7 +7,7 @@ A simple and lightweight, yet flexible calendar component for **Vue 2.x**, with:
 - using browser locale
 - date-fns/esm (only calculation methods)
 
-The intention of this component is to allow you to style your own calendar theme to suit your website design. See [Styles Guide](#styles-guild) for detail.
+The intention of this component is to allow you to style your own calendar theme to suit your website design. See [Styles Guide](#styles-guide) for detail.
 
 ## Demo
 See [Demo Page](https://kennyooi.github.io/vlite-calendar/) for more example.
@@ -47,8 +47,8 @@ Coming soon
 |--|--|--|--|
 | class-name | String | vl-calendar | Calendar CSS class prefix. |
 | date | Date | new Date() | Calendar selected date. |
-| process-date | Function | | Post-processing the final content of rendered date. Refer [`vdate` Object Guide](#vdate-object-guide) for more detail. |
-| views | Array | ['days', 'months', 'years'] | Enable different view mode on the calendar. *First item will used as default view. |
+| process-date | Function | | Post-processing the final content of rendered date. <br>See [`vdate` Object Guide](#vdate-object-guide) for more detail. |
+| views | Array | ['days', 'months', 'years'] | Enable different view mode on the calendar. <br>*First item will used as default view. |
 | week-start | Number | 0 | The first day of the week (0-Sunday) |
 | prepend | Vue Slot | | Ability to inject additional content into the start of the calendar |
 | append | Vue Slot | | Ability to inject additional content into the end of the calendar |
@@ -111,6 +111,29 @@ export default {
 | isCurrent | Boolean | Is current date same as calendar selected date? |
 | isInvalid | Boolean | Is current date disabled? |
 | isOut | Boolean | Is current date out of calendar month? |
+
+Example usage.
+```html
+<calendar
+  :process-date="onProcessDate"
+></calendar>
+```
+```js
+export default {
+  ...
+  methods: {
+    onProcessDate(vdate) {
+      // perform some checking
+      // console.log(vdate.day)
+      // vdate.isInvalid = true;
+      // ...
+
+      // remember to return back the vdate object
+      return vdate;
+    }
+  }
+}
+```
 
 ## Styles Guide
 This component is intentionally for custom calendar theme styling. Hence all CSS classes used within the component are auto-prefixed with `vl-calendar` (can be overwrite through component `class-name` prop).
