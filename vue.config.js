@@ -1,4 +1,5 @@
 module.exports = {
+  publicPath: './',
   configureWebpack: {
     optimization: {
       concatenateModules: !process.env.REPORT,
@@ -11,6 +12,7 @@ module.exports = {
         .plugin('html')
         .tap((args) => {
           args[0].template = './demo/public/index.html';
+          args[0].favicon = './demo/public/favicon.ico';
           return args;
         });
     }
