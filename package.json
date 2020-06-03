@@ -1,14 +1,45 @@
 {
-  "name": "vlite-datepicker",
+  "name": "vlite-calendar",
   "version": "0.1.0",
-  "private": true,
+  "description": "A lightweight and customizable Vue.js calendar component.",
+  "keywords": [
+    "vue",
+    "calendar",
+    "datepicker",
+    "lightweight"
+  ],
+  "author": "KennyOoi <kenny@qutebox.com>",
+  "license": "MIT",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build:lib": "vue-cli-service build --target lib --name vlite-calendar ./src/index.js",
+    "build:style": "lessc --clean-css --source-map ./src/styles/default.less ./dist/vlite-calendar-style.min.css",
+    "build:demo": "cross-env ENV=DEMO vue-cli-service build --dest ./docs ./demo/src/index.js",
+    "build:report": "cross-env REPORT=1 vue-cli-service build --target lib --name vlite-calendar --report ./src/index.js",
+    "build": "yarn build:lib && yarn build:style && yarn build:demo",
+    "serve": "cross-env ENV=DEMO vue-cli-service serve ./demo/src/index.js",
     "lint": "vue-cli-service lint"
   },
+  "main": "./dist/vlite-calendar.umd.js",
+  "module": "./dist/vlite-calendar.common.js",
+  "unpkg": "./dist/vlite-calendar.umd.min.js",
+  "browser": {
+    "./sfc": "src/Calendar.vue"
+  },
+  "files": [
+    "src",
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kennyooi/vlite-calendar"
+  },
+  "bugs": {
+    "url": "https://github.com/kennyooi/vlite-calendar/issues"
+  },
   "dependencies": {
-    "core-js": "^3.6.5",
+    "date-fns": "^2.14.0"
+  },
+  "peerDependencies": {
     "vue": "^2.6.11"
   },
   "devDependencies": {
@@ -17,9 +48,16 @@
     "@vue/cli-service": "~4.4.0",
     "@vue/eslint-config-airbnb": "^5.0.2",
     "babel-eslint": "^10.1.0",
+    "core-js": "^3.6.5",
+    "cross-env": "^6.0.0",
     "eslint": "^6.7.2",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-vue": "^6.2.2",
+    "less": "^3.11.2",
+    "less-loader": "^6.1.0",
+    "less-plugin-clean-css": "^1.5.1",
+    "vue": "^2.6.11",
+    "vue-hljs": "^1.1.2",
     "vue-template-compiler": "^2.6.11"
   }
 }

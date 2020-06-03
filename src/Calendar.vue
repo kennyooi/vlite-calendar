@@ -1,0 +1,232 @@
+<template>
+  <div :class="className">
+    <slot name="prepend" />
+    <header :class="`${className}-header`">
+      <nav :class="`${className}-row`">
+        <div
+          :class="`${className}-caption`"
+          @click.prevent="onViewClick"
+        >
+          {{ currentView.caption }}
+        </div>
+        <a
+          :class="`${className}-prev`"
+          @click.prevent="onDateChange(-1)"
+        >
+          &lt;
+        </a>
+        <a
+          :class="`${className}-next`"
+          @click.prevent="onDateChange(1)"
+        >
+          &gt;
+        </a>
+      </nav>
+    </header>
+    <div
+      :key="viewType"
+      :class="`${className}-body`"
+    >
+      <div
+        v-for="(items, row) in currentView.items"
+        :key="row"
+        :class="`${className}-row`"
+      >
+        <div
+          v-for="item in items"
+          :key="item.key"
+          :class="[item.classes, {
+            [`${className}--out`]: item.isOut,
+            [`${className}--today`]: item.isToday,
+            [`${className}--current`]: item.isCurrent,
+            [`${className}--invalid`]: item.isInvalid,
+          }]"
+          @click="!item.isStatic ? onSelect(item) : null"
+        >
+          <span>{{ item.display }}</span>
+        </div>
+      </div>
+    </div>
+    <slot name="append" />
+  </div>
+</template>
+
+<script>
+import {
+  getTime,
+  startOfDecade, endOfDecade,
+  startOfYear, endOfYear,
+  startOfMonth, endOfMonth,
+  startOfWeek, endOfWeek,
+  isToday, isSameDay, isSameMonth, isSameYear, isBefore, isAfter,
+  addDays, addMonths, addYears,
+  eachDayOfInterval, eachWeekOfInterval, eachMonthOfInterval, eachYearOfInterval,
+} from 'date-fns/esm';
+
+export default {
+  name: 'Calendar',
+  props: {
+    date: { type: Date, default: () => new Date() },
+    className: { type: String, default: 'vl-calendar' },
+    weekStart: { type: Number, default: 0 },
+    views: { type: Array, default: () => ['days', 'months', 'years'] },
+    processDate: { type: Function, default: (date) => date },
+    // dateCheck: { type: Function, default: () => false },
+  },
+  data() {
+    return {
+      viewDate: new Date(this.date.getTime()),
+      viewType: this.views[0],
+    };
+  },
+  computed: {
+    currentView() {
+      if (this.viewType === 'years') {
+        return {
+          items: this.years,
+          caption: [
+            this.dformat(startOfDecade(this.viewDate), 'yyyy'),
+            this.dformat(endOfDecade(this.viewDate), 'yyyy'),
+          ].join('-'),
+          monthsInc: 12 * 10,
+        };
+      }
+      if (this.viewType === 'months') {
+        return {
+          items: this.months,
+          caption: this.dformat(this.viewDate, 'yyyy'),
+          monthsInc: 12,
+        };
+      }
+      return {
+        items: [this.weeks].concat(this.days),
+        caption: this.dformat(this.viewDate, 'MMMM yyyy'),
+        monthsInc: 1,
+      };
+    },
+    weeks() {
+      return eachDayOfInterval({
+        start: startOfWeek(this.viewDate, { weekStartsOn: this.weekStart }),
+        end: endOfWeek(this.viewDate, { weekStartsOn: this.weekStart }),
+      }).map((day) => ({
+        key: getTime(day),
+        display: this.dformat(day, 'iiiiii'),
+        classes: `${this.className}-week`,
+        isStatic: true,
+      }));
+    },
+    days() {
+      const monthWeeks = eachWeekOfInterval({
+        start: startOfMonth(this.viewDate),
+        end: endOfMonth(this.viewDate),
+      }, { weekStartsOn: this.weekStart });
+      // always show 6 weeks per month
+      for (let i = monthWeeks.length; i < 6; i += 1) {
+        monthWeeks.push(addDays(monthWeeks[i - 1], 7));
+      }
+
+      return monthWeeks.map((weekDay) => eachDayOfInterval({
+        start: startOfWeek(weekDay, { weekStartsOn: this.weekStart }),
+        end: endOfWeek(weekDay, { weekStartsOn: this.weekStart }),
+      }).map((day) => this.processDate({
+        day,
+        key: getTime(day),
+        type: 'day',
+        viewDay: this.viewDate,
+        display: this.dformat(day, 'd'),
+        classes: `${this.className}-day`,
+        isToday: isToday(day),
+        isCurrent: isSameDay(day, this.date),
+        isOut: !isSameMonth(day, this.viewDate),
+      })));
+    },
+    months() {
+      const dataset = eachMonthOfInterval({
+        start: startOfYear(this.viewDate),
+        end: endOfYear(this.viewDate),
+      });
+      return dataset.reduce((acc, day, index) => {
+        const group = Math.floor(index / 4);
+        if (!acc[group]) {
+          acc[group] = [];
+        }
+        acc[group].push(this.processDate({
+          day,
+          key: getTime(day),
+          type: 'month',
+          viewDay: this.viewDate,
+          display: this.dformat(day, 'MMM'),
+          classes: `${this.className}-month`,
+          isCurrent: isSameMonth(day, this.date),
+        }));
+        return acc;
+      }, []);
+    },
+    years() {
+      const decadeStart = startOfDecade(this.viewDate);
+      const decadeEnd = endOfDecade(this.viewDate);
+      // sum up to 12 items
+      const dataset = eachYearOfInterval({
+        start: addYears(decadeStart, -1),
+        end: addYears(decadeEnd, 1),
+      });
+      return dataset.reduce((acc, day, index) => {
+        const group = Math.floor(index / 4);
+        if (!acc[group]) {
+          acc[group] = [];
+        }
+        acc[group].push(this.processDate({
+          day,
+          key: getTime(day),
+          type: 'year',
+          viewDay: this.viewDate,
+          display: this.dformat(day, 'yyyy'),
+          classes: `${this.className}-year`,
+          isCurrent: isSameYear(day, this.date),
+          isOut: isBefore(day, decadeStart) || isAfter(day, decadeEnd),
+        }));
+        return acc;
+      }, []);
+    },
+  },
+  methods: {
+    // using own date formatter for smaller pack size
+    dformat(date, format) {
+      let opt = {};
+      if (format === 'yyyy') {
+        opt = { year: 'numeric' };
+      } else if (format === 'MMMM yyyy') {
+        opt = { year: 'numeric', month: 'long' };
+      } else if (format === 'MMM') {
+        opt = { month: 'short' };
+      } else if (format === 'iiiiii') {
+        opt = { weekday: 'short' };
+      } else if (format === 'd') {
+        opt = { day: 'numeric' };
+      }
+      return date.toLocaleString(undefined, opt);
+    },
+    changeView(isUpward = false) {
+      const order = [...this.views];
+      order.sort();
+      const curr = order.indexOf(this.viewType);
+      const next = order[curr + (1 * isUpward ? 1 : -1)];
+      if (next) {
+        this.viewType = next;
+        this.$emit('change-view', this.viewType);
+      }
+    },
+    onViewClick() {
+      this.changeView(true);
+    },
+    onDateChange(inc) {
+      this.viewDate = addMonths(this.viewDate, inc * this.currentView.monthsInc);
+    },
+    onSelect(date) {
+      this.$emit(`select-${this.viewType.slice(0, -1)}`, { date, day: date.day });
+      this.viewDate = date.day;
+      this.changeView();
+    },
+  },
+};
+</script>
