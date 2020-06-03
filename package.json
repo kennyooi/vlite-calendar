@@ -55,7 +55,7 @@
     "eslint-plugin-vue": "^6.2.2",
     "less": "^3.11.2",
     "less-loader": "^6.1.0",
-    "less-plugin-clean-css": "^1.5.1",
+    "less-plugin-clean-css": "https://github.com/less/less-plugin-clean-css",
     "vue": "^2.6.11",
     "vue-hljs": "^1.1.2",
     "vue-template-compiler": "^2.6.11"

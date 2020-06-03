@@ -1235,10 +1235,6 @@ alphanum-sort@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
 
-amdefine@>=0.0.4:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
-
 ansi-colors@^3.0.0:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/ansi-colors/-/ansi-colors-3.2.4.tgz#e3a3da4bfbae6c86a9c285625de124a234026fbf"
@@ -1931,18 +1927,11 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-clean-css@4.2.x:
+clean-css@4.2.x, clean-css@^4.2.1:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-4.2.3.tgz#507b5de7d97b48ee53d84adb0160ff6216380f78"
   dependencies:
     source-map "~0.6.0"
-
-clean-css@^3.0.1:
-  version "3.4.28"
-  resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-3.4.28.tgz#bf1945e82fc808f55695e6ddeaec01400efd03ff"
-  dependencies:
-    commander "2.8.x"
-    source-map "0.4.x"
 
 clean-stack@^2.0.0:
   version "2.2.0"
@@ -2069,12 +2058,6 @@ combined-stream@^1.0.6, combined-stream@~1.0.6:
 commander@2.17.x:
   version "2.17.1"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.17.1.tgz#bd77ab7de6de94205ceacc72f1716d29f20a77bf"
-
-commander@2.8.x:
-  version "2.8.1"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-2.8.1.tgz#06be367febfda0c330aa1e2a072d3dc9762425d4"
-  dependencies:
-    graceful-readlink ">= 1.0.0"
 
 commander@^2.18.0, commander@^2.20.0:
   version "2.20.3"
@@ -3543,10 +3526,6 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6
   version "4.2.4"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.4.tgz#2256bde14d3632958c465ebc96dc467ca07a29fb"
 
-"graceful-readlink@>= 1.0.0":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/graceful-readlink/-/graceful-readlink-1.0.1.tgz#4cafad76bc62f02fa039b2f94e9a3dd3a391a725"
-
 gzip-size@^5.0.0:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/gzip-size/-/gzip-size-5.1.1.tgz#cb9bee692f87c0612b232840a873904e4c135274"
@@ -4354,11 +4333,11 @@ less-loader@^6.1.0:
     loader-utils "^2.0.0"
     schema-utils "^2.6.6"
 
-less-plugin-clean-css@^1.5.1:
+"less-plugin-clean-css@https://github.com/less/less-plugin-clean-css":
   version "1.5.1"
-  resolved "https://registry.yarnpkg.com/less-plugin-clean-css/-/less-plugin-clean-css-1.5.1.tgz#cc57af7aa3398957e56decebe63cb60c23429703"
+  resolved "https://github.com/less/less-plugin-clean-css#823c04eaa3005de4e8c7f4653204d7467b12d2e6"
   dependencies:
-    clean-css "^3.0.1"
+    clean-css "^4.2.1"
 
 less@^3.11.1, less@^3.11.2:
   version "3.11.2"
@@ -6391,12 +6370,6 @@ source-map-support@~0.5.12:
 source-map-url@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/source-map-url/-/source-map-url-0.4.0.tgz#3e935d7ddd73631b97659956d55128e87b5084a3"
-
-source-map@0.4.x:
-  version "0.4.4"
-  resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.4.4.tgz#eba4f5da9c0dc999de68032d8b4f76173652036b"
-  dependencies:
-    amdefine ">=0.0.4"
 
 source-map@^0.5.0, source-map@^0.5.6:
   version "0.5.7"
