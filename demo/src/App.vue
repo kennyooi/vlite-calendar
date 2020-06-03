@@ -2,7 +2,7 @@
   <div id="app">
     <header class="header">
       <div class="header-wrap">
-        <h1>VLite Calendar Demo</h1>
+        <h1>vLite Calendar</h1>
         <h2>Flexible and lightweight Vue calendar component.</h2>
       </div>
       <div class="ver">v {{ appVer }}</div>

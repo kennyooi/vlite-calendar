@@ -71,7 +71,6 @@ export default {
     weekStart: { type: Number, default: 0 },
     views: { type: Array, default: () => ['days', 'months', 'years'] },
     processDate: { type: Function, default: (date) => date },
-    // dateCheck: { type: Function, default: () => false },
   },
   data() {
     return {
@@ -223,7 +222,7 @@ export default {
       this.viewDate = addMonths(this.viewDate, inc * this.currentView.monthsInc);
     },
     onSelect(date) {
-      this.$emit(`select-${this.viewType.slice(0, -1)}`, { date, day: date.day });
+      this.$emit(`select-${this.viewType.slice(0, -1)}`, { vdate: date, day: date.day });
       this.viewDate = date.day;
       this.changeView();
     },

@@ -42,8 +42,8 @@ export default {
     onSelectDay({ day }) {
       this.date = day;
     },
-    onProcessDate(date) {
-      const newDate = { ...date };
+    onProcessDate(vdate) {
+      const newDate = { ...vdate };
       if (newDate.type === 'day') {
         if (isWeekend(newDate.day)) {
           newDate.classes += ' c-weekend';

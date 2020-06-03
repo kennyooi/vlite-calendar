@@ -46,7 +46,7 @@ export default {
   computed: {
     js() {
       return `
-onProcessDate(date) {
+onProcessDate(vdate) {
   // example of min & max implementation
   const today = new Date();
   const min = new Date(today);
@@ -54,18 +54,18 @@ onProcessDate(date) {
   max.setDate(max.getDate() + 7);
 
   // isBefore is date-fns method
-  if (isBefore(date.day, min)) {
-    date.isInvalid = true;
+  if (isBefore(vdate.day, min)) {
+    vdate.isInvalid = true;
   }
   // isAfter is date-fns method
-  else if (isAfter(date.day, max)) {
-    date.isInvalid = true;
+  else if (isAfter(vdate.day, max)) {
+    vdate.isInvalid = true;
   }
   // or other disabled dates checking
   // ...
 
-  // remember to return the final date object
-  return date;
+  // remember to return the final vdate object
+  return vdate;
 },
       `.trim();
     },
@@ -82,13 +82,13 @@ onProcessDate(date) {
     onSelectDay({ day }) {
       this.date = day;
     },
-    onProcessDate(date) {
+    onProcessDate(vdate) {
       const today = new Date();
       const min = new Date(today);
       const max = new Date(today);
       max.setDate(max.getDate() + 7);
 
-      const newDate = { ...date };
+      const newDate = { ...vdate };
       if (isBefore(newDate.day, min)) {
         newDate.isInvalid = true;
       } else if (isAfter(newDate.day, max)) {
