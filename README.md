@@ -22,11 +22,11 @@ Next, include the calendar component in your own component.
 import Calendar from 'vlite-calendar';
 
 export default {
- // ...
- components: {
- Calendar,
- },
- // ...
+  // ...
+  components: {
+    Calendar,
+  },
+  // ...
 }
 ```
 
