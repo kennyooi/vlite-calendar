@@ -15,7 +15,7 @@
         <div v-highlight>
           <pre><code class="css">{{ css }}</code></pre>
         </div>
-        <p>Read the <a href="#">Styles Guide</a> for more information.</p>
+        <p>Read the <a href="https://github.com/kennyooi/vlite-calendar#styles-guide">Styles Guide</a> for more information.</p>
         <!-- eslint-enable -->
       </div>
     </div>

@@ -14,7 +14,7 @@
       <div class="section-desc">
         <!-- eslint-disable -->
         <p>Other than setting the disabled dates, you can modify the <code>date</code> object property through <code>processDate</code> method, like injecting custom CSS class on certain date, changing the display name, and etc.</p>
-        <p>Read the <a href="#">Documentation</a> for more information of <code>date</code> object.</p>
+        <p>Read the <a href="https://github.com/kennyooi/vlite-calendar#vdate-object-guide">Documentation</a> for more information of <code>vdate</code> object.</p>
         <!-- eslint-enable -->
       </div>
     </div>

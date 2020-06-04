@@ -19,7 +19,7 @@
         <div v-highlight>
           <pre><code class="js">{{ js }}</code></pre>
         </div>
-        <p>Read the <a href="#">Documentation</a> for more information of <code>date</code> object.</p>
+        <p>Read the <a href="https://github.com/kennyooi/vlite-calendar#vdate-object-guide">Documentation</a> for more information of <code>vdate</code> object.</p>
         <!-- eslint-enable -->
       </div>
     </div>

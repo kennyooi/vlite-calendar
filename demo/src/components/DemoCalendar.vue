@@ -10,7 +10,7 @@
       </div>
       <div class="section-desc">
         <!-- eslint-disable -->
-        <p>By default, the component <b>DOES NOT</b> come with any styles dependency or inline styling, it's intentionally so that you can easily style your own theme to suit your website.</p>
+        <p>By default, the component <b>DOES NOT</b> come with any styles dependency or inline styling, it's intentionally so that you can easily to style it your own to suit your website design.</p>
         <p>However, you can use the built-in styles directly if you want to.</p>
         <!-- eslint-enable -->
         <div v-highlight>

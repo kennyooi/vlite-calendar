@@ -14,7 +14,7 @@
         <!-- eslint-disable -->
         <p>Again, to keep the component lightweight, flexible and customizable, it <b>DOES NOT</b> include any <code>&lt;input&gt;</code> tag or events for datepicker input.</p>
         <p>However, you can easily build your own datepicker component with desired styling and behavior.</p>
-        <p>Refer to repository's folder <a href="#">/demo/src/components/DatePicker/</a> for sample code.</p>
+        <p>Refer to repository's folder <a href="https://github.com/kennyooi/vlite-calendar/tree/master/demo/src/components/DatePicker">/demo/src/components/DatePicker/</a> for sample code.</p>
         <!-- eslint-enable -->
       </div>
     </div>

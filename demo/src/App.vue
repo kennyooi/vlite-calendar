@@ -103,9 +103,9 @@ export default {
           link: '#advance',
         },
         {
-          id: 'download',
-          name: 'Download',
-          link: '#',
+          id: 'github',
+          name: 'Github Page',
+          link: 'https://github.com/kennyooi/vlite-calendar/',
         },
       ];
     },
