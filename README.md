@@ -1,5 +1,3 @@
-
-
 # vLite Calendar
 
 A simple and lightweight, yet flexible calendar component for **Vue 2.x**, with:
@@ -172,4 +170,4 @@ Change logs can be found at [CHANGELOG.md](https://github.com/kennyooi/vlite-cal
 
 ## License
 
-[MIT](https://github.com/kennyooi/vlite-calendar/blob/master/LICENSE.md)
+[MIT](https://github.com/kennyooi/vlite-calendar/blob/master/LICENSE)
