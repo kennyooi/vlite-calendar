@@ -164,6 +164,11 @@ You can scope targeted these CSS classes on your component.
 </style>
 ```
 
+However, you are free to use the built-in styling if you want.
+```js
+import 'vlite-calendar/dist/vlite-calendar-style.min.css';
+```
+
 ## Change Log
 
 Change logs can be found at [CHANGELOG.md](https://github.com/kennyooi/vlite-calendar/blob/master/CHANGELOG.md)
