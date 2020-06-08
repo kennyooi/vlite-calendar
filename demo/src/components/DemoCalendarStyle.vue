@@ -11,7 +11,7 @@
       </div>
       <div class="section-desc">
         <p>Example of custom styling.</p>
-        <p>Refer to repository's <a href="https://github.com/kennyooi/vlite-calendar/tree/master/demo/src/components/DatePicker">/demo/src/components/DemoCalendarStyle.vue</a> for sample code.</p>
+        <p>Refer to repository's <a href="https://github.com/kennyooi/vlite-calendar/tree/master/demo/src/components/DemoCalendarStyle.vue">/demo/src/components/DemoCalendarStyle.vue</a> for sample code.</p>
       </div>
     </div>
   </section>
