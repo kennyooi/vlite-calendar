@@ -4,7 +4,7 @@
     <div class="section-body">
       <div class="section-showcase">
         <Calendar
-          class-name="vl-bare"
+          class-prefix="vl-bare"
           :date="date"
           @select-day="onSelectDay"
         />

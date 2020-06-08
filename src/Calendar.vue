@@ -1,22 +1,22 @@
 <template>
-  <div :class="className">
+  <div :class="classPrefix">
     <slot name="prepend" />
-    <header :class="`${className}-header`">
-      <nav :class="`${className}-row`">
+    <header :class="`${classPrefix}-header`">
+      <nav :class="`${classPrefix}-row`">
         <div
-          :class="`${className}-caption`"
+          :class="`${classPrefix}-caption`"
           @click.prevent="onViewClick"
         >
           {{ currentView.caption }}
         </div>
         <a
-          :class="`${className}-prev`"
+          :class="`${classPrefix}-prev`"
           @click.prevent="onDateChange(-1)"
         >
           &lt;
         </a>
         <a
-          :class="`${className}-next`"
+          :class="`${classPrefix}-next`"
           @click.prevent="onDateChange(1)"
         >
           &gt;
@@ -25,21 +25,21 @@
     </header>
     <div
       :key="viewType"
-      :class="`${className}-body`"
+      :class="`${classPrefix}-body`"
     >
       <div
         v-for="(items, row) in currentView.items"
         :key="row"
-        :class="`${className}-row`"
+        :class="`${classPrefix}-row`"
       >
         <div
           v-for="item in items"
           :key="item.key"
           :class="[item.classes, {
-            [`${className}--out`]: item.isOut,
-            [`${className}--today`]: item.isToday,
-            [`${className}--current`]: item.isCurrent,
-            [`${className}--invalid`]: item.isInvalid,
+            [`${classPrefix}--out`]: item.isOut,
+            [`${classPrefix}--today`]: item.isToday,
+            [`${classPrefix}--current`]: item.isCurrent,
+            [`${classPrefix}--invalid`]: item.isInvalid,
           }]"
           @click="!item.isStatic ? onSelect(item) : null"
         >
@@ -67,7 +67,7 @@ export default {
   name: 'Calendar',
   props: {
     date: { type: Date, default: () => new Date() },
-    className: { type: String, default: 'vl-calendar' },
+    classPrefix: { type: String, default: 'vl-calendar' },
     weekStart: { type: Number, default: 0 },
     views: { type: Array, default: () => ['days', 'months', 'years'] },
     processDate: { type: Function, default: (date) => date },
@@ -110,7 +110,7 @@ export default {
       }).map((day) => ({
         key: getTime(day),
         display: this.dformat(day, 'iiiiii'),
-        classes: `${this.className}-week`,
+        classes: `${this.classPrefix}-week`,
         isStatic: true,
       }));
     },
@@ -133,7 +133,7 @@ export default {
         type: 'day',
         viewDay: this.viewDate,
         display: this.dformat(day, 'd'),
-        classes: `${this.className}-day`,
+        classes: `${this.classPrefix}-day`,
         isToday: isToday(day),
         isCurrent: isSameDay(day, this.date),
         isOut: !isSameMonth(day, this.viewDate),
@@ -155,7 +155,7 @@ export default {
           type: 'month',
           viewDay: this.viewDate,
           display: this.dformat(day, 'MMM'),
-          classes: `${this.className}-month`,
+          classes: `${this.classPrefix}-month`,
           isCurrent: isSameMonth(day, this.date),
         }));
         return acc;
@@ -180,7 +180,7 @@ export default {
           type: 'year',
           viewDay: this.viewDate,
           display: this.dformat(day, 'yyyy'),
-          classes: `${this.className}-year`,
+          classes: `${this.classPrefix}-year`,
           isCurrent: isSameYear(day, this.date),
           isOut: isBefore(day, decadeStart) || isAfter(day, decadeEnd),
         }));

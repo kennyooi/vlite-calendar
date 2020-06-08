@@ -43,7 +43,7 @@ Coming soon
 ## Props Guide
 | Prop | Type | Default | Description |
 |--|--|--|--|
-| class-name | String | vl-calendar | Calendar CSS class prefix. |
+| class-prefix | String | vl-calendar | Calendar CSS class prefix. |
 | date | Date | new Date() | Calendar selected date. |
 | process-date | Function | | Post-processing the final content of rendered date. <br>See [`vdate` Object Guide](#vdate-object-guide) for more detail. |
 | views | Array | ['days', 'months', 'years'] | Enable different view mode on the calendar. <br>*First item will used as default view. |
@@ -134,7 +134,7 @@ export default {
 ```
 
 ## Styles Guide
-This component is intentionally for custom calendar theme styling. Hence all CSS classes used within the component are auto-prefixed with `vl-calendar` (can be overwrite through component `class-name` prop).
+This component is intentionally for custom calendar theme styling. Hence all CSS classes used within the component are auto-prefixed with `vl-calendar` (can be overwrite through component `class-prefix` prop).
 
 | CSS class | Description |
 |--|--|
