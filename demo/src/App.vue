@@ -31,12 +31,12 @@
         </nav>
         <div class="content">
           <div class="content-wrap">
-            <DemoCalendar id="demo" />
-            <DemoCalendarBare id="bare" />
-            <DemoCalendarDisabled id="disable" />
-            <DemoDatePicker id="datepicker" />
-            <DemoCalendarInject id="slots" />
-            <DemoCalendarAdvance id="advance" />
+            <component
+              v-for="nav in navs"
+              :key="nav.id"
+              :id="nav.id"
+              :is="nav.comp"
+            ></component>
           </div>
         </div>
       </div>
@@ -47,6 +47,7 @@
 <script>
 import DemoCalendar from './components/DemoCalendar.vue';
 import DemoCalendarBare from './components/DemoCalendarBare.vue';
+import DemoCalendarStyle from './components/DemoCalendarStyle.vue';
 import DemoCalendarDisabled from './components/DemoCalendarDisabled.vue';
 import DemoDatePicker from './components/DemoDatePicker.vue';
 import DemoCalendarInject from './components/DemoCalendarInject.vue';
@@ -57,6 +58,7 @@ export default {
   components: {
     DemoCalendar,
     DemoCalendarBare,
+    DemoCalendarStyle,
     DemoCalendarDisabled,
     DemoDatePicker,
     DemoCalendarInject,
@@ -74,36 +76,49 @@ export default {
           id: 'demo',
           name: 'Built-In Styles',
           link: '#demo',
+          comp: DemoCalendar,
         },
         {
           id: 'bare',
           name: 'Bare Styles',
           link: '#bare',
+          comp: DemoCalendarBare,
+        },
+        {
+          id: 'style',
+          name: 'Custom Styles',
+          link: '#style',
+          comp: DemoCalendarStyle,
         },
         {
           id: 'disable',
           name: 'Disable Dates',
           link: '#disable',
+          comp: DemoCalendarDisabled,
         },
         {
           id: 'datepicker',
           name: 'DatePicker',
           link: '#datepicker',
+          comp: DemoDatePicker,
         },
         {
           id: 'slots',
           name: 'Slots',
           link: '#slots',
+          comp: DemoCalendarInject,
         },
         {
           id: 'advance',
           name: 'More...',
           link: '#advance',
+          comp: DemoCalendarAdvance,
         },
         {
           id: 'github',
           name: 'Github Page',
           link: 'https://github.com/kennyooi/vlite-calendar/',
+          comp: null,
         },
       ];
     },

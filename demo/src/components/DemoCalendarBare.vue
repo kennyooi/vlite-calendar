@@ -10,11 +10,9 @@
         />
       </div>
       <div class="section-desc">
-        <!-- eslint-disable -->
         <p>In most case, you might want to have your own theme of styling, below are the basic styling setup for you to start with.</p>
         <CodeHighlighter lang="css" :text="css" />
         <p>Read the <a href="https://github.com/kennyooi/vlite-calendar#styles-guide">Styles Guide</a> for more information.</p>
-        <!-- eslint-enable -->
       </div>
     </div>
   </section>

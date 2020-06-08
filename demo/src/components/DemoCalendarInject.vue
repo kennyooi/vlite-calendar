@@ -41,11 +41,9 @@
         </Calendar>
       </div>
       <div class="section-desc">
-        <!-- eslint-disable -->
         <p>The component provided 2 Vue slots for custom DOM injection.</p>
         <p>Slot: <code>prepend</code>, <code>append</code>.</p>
         <CodeHighlighter lang="html" :text="html" />
-        <!-- eslint-enable -->
       </div>
     </div>
   </section>

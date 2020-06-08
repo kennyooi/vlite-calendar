@@ -10,13 +10,11 @@
         />
       </div>
       <div class="section-desc">
-        <!-- eslint-disable -->
         <p>In term of flexibility, the component doesn't come with built-in disabled dates checking, such as min, max or group of disabled dates.</p>
         <p>Yet, it will let you to handle them through <code>processDate</code> prop so that you will have better control of it.</p>
         <CodeHighlighter lang="html" :text="html" />
         <CodeHighlighter lang="js" :text="js" />
         <p>Read the <a href="https://github.com/kennyooi/vlite-calendar#vdate-object-guide">Documentation</a> for more information of <code>vdate</code> object.</p>
-        <!-- eslint-enable -->
       </div>
     </div>
   </section>
