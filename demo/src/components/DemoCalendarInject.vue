@@ -7,7 +7,7 @@
           :date="date"
           @select-day="onSelectDay"
         >
-          <slot slot="prepend">
+          <div slot="prepend">
             <div class="prepend-wrap">
               <button
                 type="button"
@@ -31,35 +31,35 @@
                 Next Week
               </button>
             </div>
-          </slot>
-          <slot slot="append">
+          </div>
+          <div slot="append">
             <div class="append-wrap">
               <span>Selected date: </span>
               <b>{{ displayDate }}</b>
             </div>
-          </slot>
+          </div>
         </Calendar>
       </div>
       <div class="section-desc">
         <!-- eslint-disable -->
         <p>The component provided 2 Vue slots for custom DOM injection.</p>
         <p>Slot: <code>prepend</code>, <code>append</code>.</p>
+        <CodeHighlighter lang="html" :text="html" />
         <!-- eslint-enable -->
-        <div v-highlight>
-          <pre><code class="html">{{ html }}</code></pre>
-        </div>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-import Calendar from '@/Calendar.vue';
+import Calendar from '@/../../src/Calendar.vue';
+import CodeHighlighter from './CodeHighlighter.vue';
 
 export default {
   name: 'DemoCalendarInject',
   components: {
     Calendar,
+    CodeHighlighter,
   },
   props: {
     id: { type: String, default: '' },

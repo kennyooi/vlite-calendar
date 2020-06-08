@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import Calendar from '@/Calendar.vue';
+import Calendar from '@/../../src/Calendar.vue';
 
 export default {
   name: 'DatePickerInput',

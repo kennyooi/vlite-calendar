@@ -5,7 +5,9 @@
         <h1>vLite Calendar</h1>
         <h2>Flexible and lightweight Vue calendar component.</h2>
       </div>
-      <div class="ver">v {{ appVer }}</div>
+      <a href="https://github.com/kennyooi/vlite-calendar/" class="ver" title="Github Page">
+        <img src="https://img.shields.io/github/package-json/v/kennyooi/vlite-calendar?color=success&style=flat" alt="ver" />
+      </a>
     </header>
     <div class="body">
       <div class="body-wrap">
@@ -43,7 +45,6 @@
 </template>
 
 <script>
-import { version } from '@/../package.json';
 import DemoCalendar from './components/DemoCalendar.vue';
 import DemoCalendarBare from './components/DemoCalendarBare.vue';
 import DemoCalendarDisabled from './components/DemoCalendarDisabled.vue';
@@ -67,9 +68,6 @@ export default {
     };
   },
   computed: {
-    appVer() {
-      return version;
-    },
     navs() {
       return [
         {
@@ -218,7 +216,6 @@ code.hljs{
     right: 1rem;
     bottom: 1rem;
     font-size: 0.75rem;
-    opacity: 0.7;
   }
 }
 .body{

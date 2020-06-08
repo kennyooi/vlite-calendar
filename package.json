@@ -1,6 +1,6 @@
 {
   "name": "vlite-calendar",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A lightweight and customizable Vue.js calendar component.",
   "keywords": [
     "vue",
@@ -13,10 +13,11 @@
   "scripts": {
     "build:lib": "vue-cli-service build --target lib --name vlite-calendar ./src/index.js",
     "build:style": "lessc --clean-css --source-map ./src/styles/default.less ./dist/vlite-calendar-style.min.css",
-    "build:demo": "cross-env ENV=DEMO vue-cli-service build --dest ./docs ./demo/src/index.js",
+    "build:demo": "cd demo && yarn build",
     "build:report": "cross-env REPORT=1 vue-cli-service build --target lib --name vlite-calendar --report ./src/index.js",
     "build": "yarn build:lib && yarn build:style && yarn build:demo",
-    "serve": "cross-env ENV=DEMO vue-cli-service serve ./demo/src/index.js",
+    "serve": "cd demo && yarn serve",
+    "deploy": "gh-pages -d demo/dist",
     "lint": "vue-cli-service lint"
   },
   "main": "./dist/vlite-calendar.umd.js",
@@ -53,11 +54,11 @@
     "eslint": "^6.7.2",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-vue": "^6.2.2",
+    "gh-pages": "^3.0.0",
     "less": "^3.11.2",
     "less-loader": "^6.1.0",
     "less-plugin-clean-css": "https://github.com/less/less-plugin-clean-css",
     "vue": "^2.6.11",
-    "vue-hljs": "^1.1.2",
     "vue-template-compiler": "^2.6.11"
   }
 }

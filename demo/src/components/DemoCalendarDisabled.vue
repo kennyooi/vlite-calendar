@@ -13,12 +13,8 @@
         <!-- eslint-disable -->
         <p>In term of flexibility, the component doesn't come with built-in disabled dates checking, such as min, max or group of disabled dates.</p>
         <p>Yet, it will let you to handle them through <code>processDate</code> prop so that you will have better control of it.</p>
-        <div v-highlight>
-          <pre><code class="html">{{ html }}</code></pre>
-        </div>
-        <div v-highlight>
-          <pre><code class="js">{{ js }}</code></pre>
-        </div>
+        <CodeHighlighter lang="html" :text="html" />
+        <CodeHighlighter lang="js" :text="js" />
         <p>Read the <a href="https://github.com/kennyooi/vlite-calendar#vdate-object-guide">Documentation</a> for more information of <code>vdate</code> object.</p>
         <!-- eslint-enable -->
       </div>
@@ -28,12 +24,14 @@
 
 <script>
 import { isBefore, isAfter } from 'date-fns';
-import Calendar from '@/Calendar.vue';
+import Calendar from '@/../../src/Calendar.vue';
+import CodeHighlighter from './CodeHighlighter.vue';
 
 export default {
   name: 'DemoCalendarDisabled',
   components: {
     Calendar,
+    CodeHighlighter,
   },
   props: {
     id: { type: String, default: '' },

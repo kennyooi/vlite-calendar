@@ -12,9 +12,7 @@
       <div class="section-desc">
         <!-- eslint-disable -->
         <p>In most case, you might want to have your own theme of styling, below are the basic styling setup for you to start with.</p>
-        <div v-highlight>
-          <pre><code class="css">{{ css }}</code></pre>
-        </div>
+        <CodeHighlighter lang="css" :text="css" />
         <p>Read the <a href="https://github.com/kennyooi/vlite-calendar#styles-guide">Styles Guide</a> for more information.</p>
         <!-- eslint-enable -->
       </div>
@@ -23,12 +21,14 @@
 </template>
 
 <script>
-import Calendar from '@/Calendar.vue';
+import Calendar from '@/../../src/Calendar.vue';
+import CodeHighlighter from './CodeHighlighter.vue';
 
 export default {
   name: 'DemoCalendarBare',
   components: {
     Calendar,
+    CodeHighlighter,
   },
   props: {
     id: { type: String, default: '' },
