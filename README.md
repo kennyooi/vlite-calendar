@@ -1,6 +1,6 @@
 # vLite Calendar
 
-A simple and lightweight, yet flexible calendar component for **Vue 2.x**, with:
+A simple and lightweight, yet flexible calendar component for **Vue 3.x**, with:
 - no styles dependency or inline styles
 - using browser locale
 - date-fns/esm (only calculation methods)
@@ -61,12 +61,12 @@ Example code.
 Example usage of Vue Slot.
 ```html
 <calendar :date="pickedDate">
-  <div slot="prepend">
+  <template v-slot:prepend>
     This will appear before the calendar
-  </div>
-  <div slot="append">
+  </template>
+  <template v-slot:append>
     This will appear after the calendar
-  </div>
+  </template>
 </calendar>
 ```
 
