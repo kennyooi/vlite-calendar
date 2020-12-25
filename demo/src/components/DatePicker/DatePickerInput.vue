@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import Calendar from '@/../../src/Calendar.vue';
+import Calendar from '../../main/Calendar.vue';
 
 export default {
   name: 'DatePickerInput',
@@ -52,7 +52,7 @@ export default {
   methods: {
     onSelectDay({ day }) {
       this.isShow = false;
-      this.$emit('input', day);
+      this.$emit('update:value', day);
     },
   },
 };

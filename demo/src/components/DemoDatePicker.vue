@@ -4,10 +4,10 @@
     <div class="section-body">
       <div class="section-showcase">
         <div class="form-group">
-          <DatePickerInput v-model="date" />
+          <DatePickerInput v-model:value="date" />
         </div>
         <div class="form-group">
-          <DatePickerToggle v-model="date" />
+          <DatePickerToggle v-model:value="date" />
         </div>
       </div>
       <div class="section-desc">

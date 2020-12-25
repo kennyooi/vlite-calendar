@@ -22,7 +22,7 @@
 
 <script>
 import { isBefore, isAfter } from 'date-fns';
-import Calendar from '@/../../src/Calendar.vue';
+import Calendar from '../main/Calendar.vue';
 import CodeHighlighter from './CodeHighlighter.vue';
 
 export default {

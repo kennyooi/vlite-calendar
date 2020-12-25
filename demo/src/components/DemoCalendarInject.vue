@@ -7,7 +7,7 @@
           :date="date"
           @select-day="onSelectDay"
         >
-          <div slot="prepend">
+          <template v-slot:prepend>
             <div class="prepend-wrap">
               <button
                 type="button"
@@ -31,13 +31,13 @@
                 Next Week
               </button>
             </div>
-          </div>
-          <div slot="append">
+          </template>
+          <template v-slot:append>
             <div class="append-wrap">
               <span>Selected date: </span>
               <b>{{ displayDate }}</b>
             </div>
-          </div>
+          </template>
         </Calendar>
       </div>
       <div class="section-desc">
@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import Calendar from '@/../../src/Calendar.vue';
+import Calendar from '../main/Calendar.vue';
 import CodeHighlighter from './CodeHighlighter.vue';
 
 export default {
@@ -71,12 +71,12 @@ export default {
     html() {
       return `
 <Calendar>
-  <slot slot="prepend">
+  <template v-slot:prepend>
     ...
-  </slot>
-  <slot slot="append">
+  </template>
+  <template v-slot:append>
     ...
-  </slot>
+  </template>
 </Calendar>
       `.trim();
     },

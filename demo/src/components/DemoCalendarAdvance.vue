@@ -21,7 +21,7 @@
 
 <script>
 import { isWeekend, isFirstDayOfMonth, isLastDayOfMonth } from 'date-fns';
-import Calendar from '@/../../src/Calendar.vue';
+import Calendar from '../main/Calendar.vue';
 
 export default {
   name: 'DemoCalendarAdvace',

@@ -1,9 +1,5 @@
-import Vue from 'vue';
+import { createApp } from 'vue';
 import App from './App.vue';
-import '../../src/styles/default.less';
+import './main/styles/default.less';
 
-Vue.config.productionTip = false;
-
-new Vue({
-  render: (h) => h(App),
-}).$mount('#app');
+createApp(App).mount('#app');

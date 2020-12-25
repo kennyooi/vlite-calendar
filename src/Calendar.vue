@@ -23,17 +23,14 @@
         </a>
       </nav>
     </header>
-    <div
-      :key="viewType"
-      :class="`${classPrefix}-body`"
-    >
+    <div :class="`${classPrefix}-body`">
       <div
-        v-for="(items, row) in currentView.items"
-        :key="row"
+        v-for="(row, index) in currentView.items"
+        :key="index"
         :class="`${classPrefix}-row`"
       >
         <div
-          v-for="item in items"
+          v-for="item in row"
           :key="item.key"
           :class="[item.classes, {
             [`${classPrefix}--out`]: item.isOut,

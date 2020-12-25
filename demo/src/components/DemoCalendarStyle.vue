@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import Calendar from '@/../../src/Calendar.vue';
+import Calendar from '../main/Calendar.vue';
 
 export default {
   name: 'DemoCalendarStyle',
