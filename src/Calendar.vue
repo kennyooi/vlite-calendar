@@ -39,6 +39,8 @@
             [`${classPrefix}--invalid`]: item.isInvalid,
           }]"
           @click="!item.isStatic ? onSelect(item) : null"
+          @mouseover="!item.isStatic && enableMouseListener ? $emit('mouseover-item', item, $event) : null"
+          @mouseleave="!item.isStatic && enableMouseListener ? $emit('mouseleave-item', item, $event) : null"
         >
           <span>{{ item.display }}</span>
         </div>
@@ -64,14 +66,16 @@ export default {
   name: 'Calendar',
   props: {
     date: { type: Date, default: () => new Date() },
+    calendarDate: { type: Date },
     classPrefix: { type: String, default: 'vl-calendar' },
     weekStart: { type: Number, default: 0 },
     views: { type: Array, default: () => ['days', 'months', 'years'] },
+    enableMouseListener: { type: Boolean, default: false },
     processDate: { type: Function, default: (date) => date },
   },
   data() {
     return {
-      viewDate: new Date(this.date.getTime()),
+      viewDate: this.calendarDate || new Date(this.date.getTime()),
       viewType: this.views[0],
     };
   },
