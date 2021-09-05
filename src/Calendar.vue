@@ -75,7 +75,7 @@ export default {
   },
   data() {
     return {
-      viewDate: this.calendarDate || new Date(this.date.getTime()),
+      viewDate: this.calendarDate ? new Date(this.calendarDate.getTime()) : new Date(this.date.getTime()),
       viewType: this.views[0],
     };
   },
@@ -187,6 +187,13 @@ export default {
         }));
         return acc;
       }, []);
+    },
+  },
+  watch: {
+    calendarDate(newVal) {
+      if (newVal && !isSameDay(newVal, this.viewDate)) {
+        this.viewDate = new Date(newVal.getTime());
+      }
     },
   },
   methods: {
